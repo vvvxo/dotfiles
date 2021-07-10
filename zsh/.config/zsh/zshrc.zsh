@@ -1,16 +1,3 @@
-# 作为嵌入式终端时禁用 tmux
-if [[ -z $TMUX && $- == *i* ]]; then
-    if [[ ! "$(</proc/$PPID/cmdline)" =~ "/usr/bin/(dolphin|emacs|kate)|visual-studio-code" ]]; then
-        exec tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"
-    fi
-else
-    # 如果当前 shell 是由 konsole 启动的，则 unset 相关变量
-    # 免作为子进程的 konsole 继承相关变量导致 fzf-tab 误判为 tmux 环境
-    if [[ "$(</proc/$PPID/cmdline)" =~ "konsole" ]]; then
-        unset TMUX TMUX_PANE
-    fi
-fi
-
 # 让 prompt 在底部
 # printf "\n%.0s" {1..100}
 
@@ -138,8 +125,8 @@ zinit as="completion" for \
     OMZP::fd/_fd
 
 source /etc/grc.zsh
-source ~/.travis/travis.sh
-source ~/Coding/shell/zvm/zvm.zsh
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
 
 zstyle ':zce:*' keys 'asdghklqwertyuiopzxcvbnmfj;23456789'
 
@@ -195,8 +182,6 @@ zstyle ':fzf-tab:*:*argument-rest*' popup-pad 100 0
 # ==== ====
 
 # https://blog.lilydjwg.me/2015/7/26/a-simple-zsh-module.116403.html
-zmodload aloxaf/subreap
-subreap
 
 set_fast_theme() {
     FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}alias]='fg=blue'
