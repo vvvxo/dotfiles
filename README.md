@@ -2,6 +2,10 @@
 
 My dotfiles controlled by GNU stow following [this way](https://farseerfc.me/using-gnu-stow-to-manage-your-dotfiles.html)
 
+## 代理设置
+使用 WSLProxy.sh 可以将 WSL 自动配置代理的命令追加到 .com/zsh/.zshrc 中
+其他系统不要使用，否则会出现代理错误
+
 ## Requirements
 
 ```bash
