@@ -144,8 +144,7 @@ done
 
 # ==== 加载并配置 fzf-tab ====
 
-source ~/Coding/shell/fzf-tab/fzf-tab.zsh
-
+zinit light Aloxaf/fzf-tab
 zstyle ':fzf-tab:complete:_zlua:*' query-string input
 zstyle ':fzf-tab:complete:kill:argument-rest' fzf-preview 'ps --pid=$word -o cmd --no-headers -w -w'
 zstyle ':fzf-tab:complete:kill:argument-rest' fzf-flags '--preview-window=down:3:wrap'
